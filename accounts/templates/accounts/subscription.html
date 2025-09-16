@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2>{{ template_data.title }}</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead">
+                        Based on your total spending of <strong>${{ template_data.total_spent }}</strong>, your current subscription level is:
+                    </p>
+                    <h3 class="display-4 text-center my-4">{{ template_data.subscription_level }}</h3>
+                    <hr>
+                    <div>
+                        <h5>Subscription Tiers:</h5>
+                        <ul>
+                            <li><b>Basic:</b> Less than $15 spent</li>
+                            <li><b>Medium:</b> Between $15 and $30 spent</li>
+                            <li><b>Premium:</b> More than $30 spent</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
