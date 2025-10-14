@@ -1,0 +1,22 @@
+{% extends "admin/index.html" %}
+{% load admin_extras %} {% block content %}
+    {# First, call our tag to get the top purchaser data #}
+    {% get_top_purchaser as top_user %}
+
+    {# This is our new custom panel #}
+    {% if top_user and top_user.total_movies_purchased > 0 %}
+        <div class="module">
+            <h2>🏆 Top Purchaser</h2>
+            <div style="padding: 10px 15px;">
+                <p style="font-size: 1.1em;">
+                    The user who has purchased the most movies is 
+                    <strong>{{ top_user.username }}</strong> 
+                    with a total of <strong>{{ top_user.total_movies_purchased }}</strong> movies.
+                </p>
+            </div>
+        </div>
+    {% endif %}
+
+    {# This makes sure the rest of the original homepage still appears #}
+    {{ block.super }}
+{% endblock %}
